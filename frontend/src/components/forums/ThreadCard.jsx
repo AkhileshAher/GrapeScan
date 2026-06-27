@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { RoleBadge, StatusBadge, CategoryBadge } from "./ForumBadges";
 
 export default function ThreadCard({ thread }) {
   return (
-    <a
-      href={`/forum/thread/${thread._id}`}
+    <Link
+      to={`/forum/thread/${thread._id}`}
       className="block bg-slate-800 border border-slate-700 rounded-2xl px-5 py-5 mb-3 transition-all hover:-translate-y-0.5 hover:border-violet-500"
     >
       <div className="mb-3">
@@ -31,6 +32,6 @@ export default function ThreadCard({ thread }) {
           <i className="fa fa-clock" aria-hidden="true" /> {thread.created_at}
         </span>
       </div>
-    </a>
+    </Link>
   );
 }

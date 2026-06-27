@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const MODULES = [
   {
     href: "/chatbot",
@@ -57,23 +58,23 @@ const MODULES = [
 
 function ModuleCard({ href, icon, title, subtitle, from, to, border }) {
   return (
-    <a
-      href={href}
+    <Link
+      to={href}
       className={`flex items-center gap-3.5 rounded-2xl border ${border} bg-gradient-to-br ${from} ${to} px-4 py-5 transition-transform duration-200 hover:-translate-y-1`}
     >
       <span className="text-3xl shrink-0">{icon}</span>
       <div>
-        <div className="font-bold text-slate-800 leading-tight">{title}</div>
-        <div className="text-sm text-slate-600 leading-tight">{subtitle}</div>
+        <div className="font-bold text-slate-800 dark:text-slate-100 leading-tight">{title}</div>
+        <div className="text-sm text-slate-600 dark:text-slate-400 leading-tight">{subtitle}</div>
       </div>
-    </a>
+    </Link>
   );
 }
 
 export default function FeatureModules() {
   return (
     <div className="mb-8">
-      <h3 className="text-lg font-semibold text-slate-800 mb-4">🚀 Feature Modules</h3>
+      <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4">🚀 Feature Modules</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {MODULES.map((mod) => (
           <ModuleCard key={mod.href} {...mod} />

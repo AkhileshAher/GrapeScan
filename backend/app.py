@@ -54,10 +54,16 @@ from marketplace import (
 # ============================================
 # Flask App Configuration
 # ============================================
+template_dir = os.path.join(BASE_DIR, 'frontend')
+dist_dir = os.path.join(BASE_DIR, 'frontend', 'dist')
+if os.path.exists(dist_dir):
+    template_dir = dist_dir
+
 app = Flask(
     __name__,
-    template_folder=os.path.join(BASE_DIR, 'frontend'),    # HTML templates
-    static_folder=os.path.join(BASE_DIR, 'static'),         # Static assets (CSS, JS)
+    template_folder=template_dir,
+    static_folder=template_dir,
+    static_url_path='',
 )
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
@@ -104,13 +110,13 @@ def home():
 @app.route('/login')
 def login_page():
     """Serve the login page."""
-    return render_template('login.html')
+    return render_template('index.html')
 
 
 @app.route('/register')
 def register_page():
     """Serve the registration page."""
-    return render_template('register.html')
+    return render_template('index.html')
 
 
 @app.route('/dashboard')
@@ -119,7 +125,7 @@ def dashboard_page():
     Serve the prediction history dashboard.
     Authentication is handled client-side via JWT.
     """
-    return render_template('dashboard.html')
+    return render_template('index.html')
 
 
 @app.route('/predict-page')
@@ -128,7 +134,7 @@ def predict_page():
     Serve the disease prediction page.
     Authentication is handled client-side via JWT.
     """
-    return render_template('predict.html')
+    return render_template('index.html')
 
 
 # ============================================
@@ -343,7 +349,7 @@ def get_history(current_user):
 
 @app.route('/chatbot')
 def chatbot_page():
-    return render_template('chatbot.html')
+    return render_template('index.html')
 
 @app.route('/api/chat', methods=['POST'])
 @token_required
@@ -379,7 +385,7 @@ def chat_history(current_user, session_id):
 
 @app.route('/schemes')
 def schemes_page():
-    return render_template('schemes.html')
+    return render_template('index.html')
 
 @app.route('/api/schemes', methods=['GET'])
 def api_schemes():
@@ -405,7 +411,7 @@ def api_scheme_categories():
 
 @app.route('/prices')
 def prices_page():
-    return render_template('prices.html')
+    return render_template('index.html')
 
 @app.route('/api/prices', methods=['GET'])
 def api_prices():
@@ -426,7 +432,7 @@ def api_commodities():
 
 @app.route('/recommendations')
 def recommendations_page():
-    return render_template('recommendations.html')
+    return render_template('index.html')
 
 @app.route('/api/recommend', methods=['GET'])
 def api_recommend():
@@ -442,11 +448,11 @@ def api_recommend():
 
 @app.route('/forum')
 def forum_page():
-    return render_template('forum.html')
+    return render_template('index.html')
 
 @app.route('/forum/thread/<thread_id>')
 def forum_thread_page(thread_id):
-    return render_template('forum_thread.html')
+    return render_template('index.html')
 
 @app.route('/api/forum/threads', methods=['GET'])
 def api_get_threads():
@@ -505,7 +511,7 @@ def api_forum_stats():
 
 @app.route('/marketplace')
 def marketplace_page():
-    return render_template('marketplace.html')
+    return render_template('index.html')
 
 @app.route('/api/marketplace/ads', methods=['GET'])
 def api_get_ads():

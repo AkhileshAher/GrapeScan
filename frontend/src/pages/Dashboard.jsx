@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import StatsGrid from "../components/dashboard/StatsGrid";
 import FeatureModules from "../components/dashboard/FeatureModules";
@@ -84,12 +85,12 @@ export default function Dashboard() {
               Welcome back, <strong className="text-slate-700">{userName}</strong>
             </p>
           </div>
-          <a
-            href="/predict-page"
+          <Link
+            to="/predict-page"
             className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-xl transition-colors shrink-0"
           >
             🔬 New Prediction
-          </a>
+          </Link>
         </div>
 
         <StatsGrid predictions={predictions} />

@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
+
 export default function ChatNavbar() {
   return (
     <nav className="flex items-center gap-4 px-6 py-3 bg-slate-900 border-b border-slate-700 shrink-0 z-10">
-      <a
-        href="/dashboard"
+      <Link
+        to="/dashboard"
         className="flex items-center gap-2 text-sm text-slate-400 hover:text-emerald-500 transition-colors"
       >
         <i className="fa fa-arrow-left" aria-hidden="true" />
         Back
-      </a>
+      </Link>
 
       <div className="flex items-center gap-2 text-lg font-bold bg-gradient-to-br from-indigo-400 to-purple-500 bg-clip-text text-transparent">
         🤖 KrishiBot

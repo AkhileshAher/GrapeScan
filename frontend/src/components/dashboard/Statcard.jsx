@@ -6,15 +6,15 @@ const ICON_STYLES = {
 
 export default function StatCard({ icon, value, label, tone = "emerald" }) {
   return (
-    <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex items-center gap-4 hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-850 shadow-sm p-5 flex items-center gap-4 hover:shadow-md transition-all">
       <div
         className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0 ${ICON_STYLES[tone]}`}
       >
         {icon}
       </div>
       <div>
-        <div className="text-2xl font-bold text-slate-800 leading-tight">{value}</div>
-        <div className="text-sm text-slate-500">{label}</div>
+        <div className="text-2xl font-bold text-slate-800 dark:text-slate-100 leading-tight">{value}</div>
+        <div className="text-sm text-slate-500 dark:text-slate-400">{label}</div>
       </div>
     </div>
   );
